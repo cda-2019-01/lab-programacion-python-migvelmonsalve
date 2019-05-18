@@ -11,3 +11,17 @@
 ## E,2,3
 ## E,3,3
 ##
+text = []
+with open('data.csv', 'rt') as f:
+        text += f.readlines()
+        
+text = [line[:-1] for line in text]
+text = [line.split('\t') for line in text]
+
+resultado = []
+
+for line in text:
+    resultado.append('{},{},{}'.format(line[0],len(line[3].split(',')),len(line[4].split(','))))
+    
+resultado = '\n'.join(resultado)
+print(resultado)
