@@ -10,3 +10,16 @@
 ## E,11
 ## E,16
 ##
+text = []
+with open('data.csv', 'rt') as f:
+        text += f.readlines()
+        
+text = [line[:-1] for line in text]
+text = [line.split('\t') for line in text]
+
+for line in text:
+    column5 = line[4].split(',')
+    x=0
+    for line2 in column5:
+        x = x + int(line2.split(':')[1])
+    print('{},{}'.format(line[0],x))
