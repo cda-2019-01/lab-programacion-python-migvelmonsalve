@@ -10,3 +10,19 @@
 ## f,110
 ## g,35
 ##
+text = []
+with open('data.csv', 'rt') as f:
+        text += f.readlines()
+        
+text = [line.split('\t') for line in text]
+text2 = [line[3] for line in text]
+text2 = ','.join(text2)
+text2 = text2.split(',')
+text4 = list(set(text2))
+text4.sort()
+for letra in text4:
+    x=0
+    for line in text:
+        if line[3].split(',').count(letra) > 0:
+            x = x + int(line[1])
+    print('{},{}'.format(letra,x))
